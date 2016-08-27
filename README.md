@@ -1,1 +1,1 @@
-Basic example of nim game in PHP
+Nim solver in PHP with unit tests
