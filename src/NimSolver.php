@@ -7,3 +7,17 @@
   Please use composer and make sure that your dependencies support PHP 5.5.9 and includes unit tests.
 
 */
+
+class NimSolver {
+  public static function canWin($numStones) {
+
+    if(!is_numeric($numStones)) {
+      throw new InvalidArgumentException('The number of stones must be numeric!');
+    }
+    if($numStones < 0) {
+      throw new UnexpectedValueException('The number of stones cannot be negative!');
+    }
+
+    return !(($numStones % 4) == 0);
+  }
+}
