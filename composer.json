@@ -1,5 +1,21 @@
 {
-    "require": {
-        "phpunit/phpunit": "5.5.*"
+    "name": "kraftman/nim",
+    "description": "basic solver for the game nim",
+    "authors": [
+        {
+            "name": "Chris Tanner",
+            "email": "me@itschr.is"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+      "phpunit/phpunit": "5.5.*"
+    },
+    "autoload": {
+      "psr-4": {
+        "kraftman\\nim\\": "src/",
+        "kraftman\\nim\\tests\\": "tests/"
+      }
     }
+
 }
