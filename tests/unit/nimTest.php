@@ -1,14 +1,16 @@
 <?php
 
+  namespace kraftman\nim\tests\unit;
+
   use phpunit\framework\TestCase;
-  require_once('src/NimSolver.php');
+  use kraftman\nim\NimSolver;
 
   class TestNim extends TestCase
   {
 
     public function testInvalidArguments()
     {
-      $this->setExpectedException(InvalidArgumentException::class);
+      $this->setExpectedException(\InvalidArgumentException::class);
       NimSolver::canWin('string');
       $this->assertTrue(true);
 
@@ -16,18 +18,27 @@
 
     public function testNegativeValueThrowsError()
     {
-      $this->setExpectedException(UnexpectedValueException::class);
+      $this->setExpectedException(\UnexpectedValueException::class);
       NimSolver::canWin(-1);
     }
 
-    public function testFunctionality()
+    public function valuesProvider()
     {
-      $this->assertEquals(false, NimSolver::canWin(0));
-      $this->assertEquals(true, NimSolver::canWin(3));
-      $this->assertEquals(false, NimSolver::canWin(4));
-      $this->assertEquals(false, NimSolver::canWin(8));
-      $this->assertEquals(true, NimSolver::canWin(9));
+      return [
+        [0, false],
+        [3, true],
+        [4, false],
+        [8, false],
+        [9, true]
+      ];
+    }
 
+    /**
+    * @dataProvider valuesProvider
+    */
+    public function testFunctionality($value, $expected)
+    {
+      $this->assertEquals($expected, NimSolver::canWin($value));
     }
 
   }
